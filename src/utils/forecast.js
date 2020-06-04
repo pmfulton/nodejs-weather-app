@@ -10,7 +10,9 @@ const forecast = (lat,long, callback) => {
         } else {
             callback(undefined, {
                 temp: body.currently.temperature,
-                humidity: body.currently.humidity
+                humidity: body.currently.humidity,
+                icon: body.currently.icon,
+                summary: body.currently.summary
             })  
         } 
     })

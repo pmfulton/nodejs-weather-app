@@ -23,26 +23,14 @@ app.use(express.static(publicDirectoryPath))
 
 
 app.get('', (req, res) => {
-    res.render('index', {
-        title: 'Weather',
-        name: 'Peter Fulton'
-    })
+    res.render('index')
 })
 
 app.get('/about', (req,res) => {
-    res.render('about',{
-        title: 'About me',
-        name: 'Peter Fulton'
-    })
+    res.render('about')
 })
 
-app.get('/help', (req,res) => {
-    res.render('help', {
-        title: 'Help page',
-        message: 'Please select an option below.',
-        name: 'Peter Fulton'
-    })
-})
+
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
@@ -62,6 +50,8 @@ app.get('/weather', (req, res) => {
 
             res.send({
                     location,
+                    latitude,
+                    longitude,
                     address: req.query.address,
                     forecast: forecastData
             })
@@ -71,21 +61,6 @@ app.get('/weather', (req, res) => {
 
 
 
-
-app.get('/help/*', (req,res) => {
-    res.render('error', {
-        body: 'Help article not found.',
-        name: 'Peter Fulton'
-    })
-})
-
-
-app.get('*',(req,res) => {
-    res.render('error', {
-        body: 'Page not found.',
-        name:'Peter Fulton'
-    })
-})
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)

@@ -5,26 +5,58 @@
 <head>
     <title>Weather App</title>
     <link rel="icon" href="/img/weather.png">
-    <link rel="stylesheet" href="/css/styles.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+    <script src='/js/tempElements.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/slate/bootstrap.min.css" rel="stylesheet" integrity="sha384-idNH3UIOiZbCf8jxqu4iExnH34y5UovfW/Mg8T5WfNvoJolDvknoNqR69V2OexgF" crossorigin="anonymous">  
 </head>
 
+
 <body>
+    <noscript>You must enable javascript to use this application.</noscript>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand">Meteorlogical Conditions</a>
+        <button id="toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Search <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+    <div id="drop"></div><br><br>
+    
+
+
     <div class="main-content">
-        {{>headers}}
-        
-        <p>Use this site to get your weather!</p>
+        <img src="/img/cloud.png"/>
+        <form id="weather-form">
+            <div class="form-group">
+                <label class="col-form-label" for="user-location">Enter a Location: </label>
+                <input type="text" class="form-control" placeholder="Location" id="user-location">
+            </div>
+            <button id="search-submit" class="btn btn-primary">Search</button>
+        </form><br>
 
-        <form>
-            <input placeholder="Location">
-            <button>Search</button>
-        </form>
+         
 
-        <p id="message-1"> </p>
-        <p id="message-2"> </p>
+        <div id="data-card"></div>
+    </div><br><br>
 
-    </div>
 
-    {{>footer}}
+    
+    <div id="map" ></div>
+
+
+    
     
     <script src="/js/app.js"></script>
 </body>
